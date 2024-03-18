@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.squareup.logging.interceptor)
     implementation(libs.squareup.okhttp3.logging.interceptor)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.glide)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -3,14 +3,19 @@ package com.example.storyapp.view.main
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.storyapp.R
+import com.example.storyapp.data.Result
+import com.example.storyapp.data.remote.response.ListStoryItem
 import com.example.storyapp.databinding.ActivityMainBinding
 import com.example.storyapp.view.ViewModelFactory
 import com.example.storyapp.view.login.LoginActivity
@@ -43,12 +48,41 @@ class MainActivity : AppCompatActivity() {
         }
 
         setupView()
-        setupAction()
-    }
 
-    private fun setupAction() {
-        binding.actionLogout.setOnClickListener {
-            viewModel.logout()
+        val layoutManager = LinearLayoutManager(this)
+        binding.rvStory.layoutManager = layoutManager
+
+        viewModel.getStories().observe(this) { result ->
+            if (result != null) {
+                when (result) {
+                    is Result.Loading -> {
+                        binding.pbHome.visibility = View.VISIBLE
+                    }
+
+                    is Result.Success -> {
+                        binding.pbHome.visibility = View.GONE
+                        val listStory = result.data.listStory
+                        setStoryData(listStory)
+                    }
+
+                    is Result.Error -> {
+                        binding.pbHome.visibility = View.GONE
+                        val errorMessage = result.error
+                        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
+        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_logout -> {
+                    viewModel.logout()
+                    true
+                }
+
+                else -> false
+            }
         }
     }
 
@@ -63,5 +97,11 @@ class MainActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+    }
+
+    private fun setStoryData(stories: List<ListStoryItem>) {
+        val adapter = StoryAdapter()
+        adapter.submitList(stories)
+        binding.rvStory.adapter = adapter
     }
 }

@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.storyapp.data.Result
 import com.example.storyapp.data.UserRepository
 import com.example.storyapp.data.pref.UserModel
+import com.example.storyapp.data.remote.response.StoryResponse
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: UserRepository) : ViewModel() {
@@ -17,5 +19,9 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
         viewModelScope.launch {
             repository.logout()
         }
+    }
+
+    fun getStories(): LiveData<Result<StoryResponse>> {
+        return repository.getStories()
     }
 }

@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.storyapp.data.pref.UserModel
 import com.example.storyapp.data.pref.UserPreference
+import com.example.storyapp.data.remote.response.DetailStoryResponse
 import com.example.storyapp.data.remote.response.LoginResponse
 import com.example.storyapp.data.remote.response.RegisterResponse
+import com.example.storyapp.data.remote.response.StoryResponse
 import com.example.storyapp.data.remote.retrofit.ApiService
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
@@ -45,6 +47,38 @@ class UserRepository private constructor(
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
             val errorBody = Gson().fromJson(jsonInString, LoginResponse::class.java)
+            val errorMessage = errorBody.message
+            emit(Result.Error(errorMessage.toString()))
+        }
+    }
+
+    fun getStories(): LiveData<Result<StoryResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getStories()
+            val listStory = response.listStory
+            val error = response.error
+            val message = response.message
+            emit(Result.Success(StoryResponse(listStory, error, message)))
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, StoryResponse::class.java)
+            val errorMessage = errorBody.message
+            emit(Result.Error(errorMessage.toString()))
+        }
+    }
+
+    fun getDetailStory(id: String): LiveData<Result<DetailStoryResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getDetailStory(id)
+            val story = response.story
+            val error = response.error
+            val message = response.message
+            emit(Result.Success(DetailStoryResponse(error, message, story)))
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, DetailStoryResponse::class.java)
             val errorMessage = errorBody.message
             emit(Result.Error(errorMessage.toString()))
         }

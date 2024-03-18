@@ -20,4 +20,9 @@
 
     <string name="label_to_login">Already have an account ?</string>
     <string name="to_login"><u>login</u></string>
+    <string name="menuLogout">Logout</string>
+
+    <string name="placeholder_title">Title</string>
+    <string name="placeholder_desc">Description</string>
+    <string name="placeholder_date">Date</string>
 </resources>
