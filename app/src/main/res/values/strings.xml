@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">StoryApp</string>
+
+    <string name="welcome">Welcome to Story App.</string>
+    <string name="logout">Logout</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="login_title">Login.</string>
+    <string name="login_body">Please log in using the registered account.</string>
+    <string name="register_title">Register.</string>
+    <string name="register_body">Please fill in your identity.</string>
+
+    <string name="label_to_register">Don\'t have an account yet?</string>
+    <string name="to_register"><u>register here</u></string>
+
+    <string name="label_to_login">Already have an account ?</string>
+    <string name="to_login"><u>login</u></string>
 </resources>
