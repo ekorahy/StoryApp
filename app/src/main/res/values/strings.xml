@@ -25,4 +25,8 @@
     <string name="placeholder_title">Title</string>
     <string name="placeholder_desc">Description</string>
     <string name="placeholder_date">Date</string>
+
+    <string name="label_Gallery">Gallery</string>
+    <string name="label_Camera">Camera</string>
+    <string name="label_upload">Upload</string>
 </resources>

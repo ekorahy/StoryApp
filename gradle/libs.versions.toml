@@ -19,6 +19,8 @@ loggingInterceptor = "4.11.0"
 lifecycleRuntimeKtx = "2.7.0"
 kotlinParcelize = "1.9.0"
 glide = "4.16.0"
+generativeai = "0.2.2"
+exifinterface = "1.3.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +40,8 @@ squareup-logging-interceptor = { group = "com.squareup.retrofit2", name = "conve
 squareup-okhttp3-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+generativeai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeai" }
+exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exifinterface"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

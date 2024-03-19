@@ -18,6 +18,7 @@ import com.example.storyapp.data.Result
 import com.example.storyapp.data.remote.response.ListStoryItem
 import com.example.storyapp.databinding.ActivityMainBinding
 import com.example.storyapp.view.ViewModelFactory
+import com.example.storyapp.view.addstory.AddStoryActivity
 import com.example.storyapp.view.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
@@ -83,6 +84,11 @@ class MainActivity : AppCompatActivity() {
 
                 else -> false
             }
+        }
+
+        binding.fabAddStory.setOnClickListener {
+            val intent = Intent(this, AddStoryActivity::class.java)
+            startActivity(intent)
         }
     }
 
