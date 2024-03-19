@@ -1,11 +1,8 @@
 package com.example.storyapp.view.register
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -38,8 +35,6 @@ class RegisterActivity : AppCompatActivity() {
         val viewModel: RegisterViewModel by viewModels {
             factory
         }
-
-        setupView()
 
         binding.btnRegister.setOnClickListener {
             val name = binding.edRegisterName.text.toString()
@@ -84,18 +79,5 @@ class RegisterActivity : AppCompatActivity() {
             create()
             show()
         }
-    }
-
-    private fun setupView() {
-        @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-        supportActionBar?.hide()
     }
 }

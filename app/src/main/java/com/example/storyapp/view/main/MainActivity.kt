@@ -1,14 +1,12 @@
 package com.example.storyapp.view.main
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -48,8 +46,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        setupView()
-
         val layoutManager = LinearLayoutManager(this)
         binding.rvStory.layoutManager = layoutManager
 
@@ -63,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                     is Result.Success -> {
                         binding.pbHome.visibility = View.GONE
                         val listStory = result.data.listStory
-                        setStoryData(listStory)
+                        listStory?.let { setStoryData(it) }
                     }
 
                     is Result.Error -> {
@@ -75,15 +71,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.menu_logout -> {
-                    viewModel.logout()
-                    true
-                }
-
-                else -> false
-            }
+        binding.btnLogout.setOnClickListener {
+            alertDialogLogout()
         }
 
         binding.fabAddStory.setOnClickListener {
@@ -92,22 +81,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @Suppress("DEPRECATION")
-    private fun setupView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-        supportActionBar?.hide()
-    }
-
     private fun setStoryData(stories: List<ListStoryItem>) {
         val adapter = StoryAdapter()
         adapter.submitList(stories)
         binding.rvStory.adapter = adapter
+    }
+
+    private fun alertDialogLogout() {
+        AlertDialog.Builder(this).apply {
+            setTitle("Confirmation!")
+            setMessage("Are you sure, you want to log out?")
+            setPositiveButton("Yes") { _, _ ->
+                viewModel.logout()
+                val intent = Intent(context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+            }
+            setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            create()
+            show()
+        }
     }
 }

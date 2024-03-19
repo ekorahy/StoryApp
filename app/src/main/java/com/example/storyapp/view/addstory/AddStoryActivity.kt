@@ -59,6 +59,10 @@ class AddStoryActivity : AppCompatActivity() {
             val description = binding.edDescription.text.toString()
             uploadImage(description)
         }
+
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private fun startGallery() {
@@ -96,7 +100,6 @@ class AddStoryActivity : AppCompatActivity() {
     }
 
     private fun uploadImage(description: String) {
-        binding.pbAddStory.visibility = View.VISIBLE
         currentImageUri?.let { uri ->
             val imageFile = uriToFile(uri, this).reduceFileImage()
 

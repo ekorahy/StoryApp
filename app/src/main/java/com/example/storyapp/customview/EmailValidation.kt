@@ -6,9 +6,11 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Patterns
-import com.google.android.material.textfield.TextInputEditText
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.content.ContextCompat
+import com.example.storyapp.R
 
-class EmailValidation : TextInputEditText {
+class EmailValidation : AppCompatEditText {
     constructor(context: Context) : super(context) {
         init()
     }
@@ -34,7 +36,9 @@ class EmailValidation : TextInputEditText {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val email = s.toString().trim()
                 if (TextUtils.isEmpty(email) || !isValidEmail(email)) {
-                    setError("Email not valid", null)
+                    val drawable = ContextCompat.getDrawable(context, R.drawable.ic_error)
+                    drawable?.setBounds(0, 0, drawable.intrinsicWidth, drawable.intrinsicHeight)
+                    setError("Email not valid", drawable)
                 } else {
                     error = null
                 }

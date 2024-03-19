@@ -14,6 +14,7 @@ import com.example.storyapp.R
 import com.example.storyapp.data.Result
 import com.example.storyapp.data.remote.response.Story
 import com.example.storyapp.databinding.ActivityDetailStoryBinding
+import com.example.storyapp.utils.convertDate
 import com.example.storyapp.view.ViewModelFactory
 
 class DetailStoryActivity : AppCompatActivity() {
@@ -59,6 +60,9 @@ class DetailStoryActivity : AppCompatActivity() {
             }
         }
 
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private fun setDetailStory(story: Story) {
@@ -68,6 +72,7 @@ class DetailStoryActivity : AppCompatActivity() {
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(ivStory)
             tvName.text = story.name
+            tvDate.text = convertDate(story.createdAt.toString())
             tvDesc.text = story.description
         }
     }

@@ -5,6 +5,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.content.ContextCompat
+import com.example.storyapp.R
 
 class PasswordValidation : AppCompatEditText {
     constructor(context: Context) : super(context) {
@@ -32,7 +34,9 @@ class PasswordValidation : AppCompatEditText {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.toString().length < 8) {
-                    setError("Password cannot less than 8 character", null)
+                    val drawable = ContextCompat.getDrawable(context, R.drawable.ic_error)
+                    drawable?.setBounds(0, 0, drawable.intrinsicWidth, drawable.intrinsicHeight)
+                    setError("Password cannot less than 8 character", drawable)
                 } else {
                     error = null
                 }

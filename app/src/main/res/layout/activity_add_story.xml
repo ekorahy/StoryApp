@@ -7,14 +7,56 @@
     android:layout_height="match_parent"
     tools:context=".view.addstory.AddStoryActivity">
 
+    <LinearLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            app:icon="@drawable/ic_arrow_back"
+            app:iconSize="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/google_sans_regular"
+            android:text="@string/label_add_story"
+            android:textColor="@color/md_theme_primary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/material_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar" />
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:paddingBottom="96dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/material_divider">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,12 +70,20 @@
                 android:layout_height="300dp"
                 android:layout_marginTop="32dp"
                 android:scaleType="centerCrop"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                android:src="@drawable/iv_preview" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/google_sans_light"
+                android:text="@string/label_use_image"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -42,30 +92,46 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
+                    android:fontFamily="@font/google_sans_medium"
                     android:text="@string/label_Gallery" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/google_sans_light"
+                    android:text="@string/label_or"
+                    android:textSize="14sp" />
 
                 <Button
                     android:id="@+id/btn_camera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
+                    android:fontFamily="@font/google_sans_medium"
                     android:text="@string/label_Camera" />
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_description"
-                style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:hint="@string/placeholder_desc"
-                android:lines="6" />
+                android:hint="@string/placeholder_desc">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_description"
+                    style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/google_sans_light"
+                    android:lines="6" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_upload"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/google_sans_medium"
                 android:text="@string/label_upload" />
         </LinearLayout>
     </ScrollView>

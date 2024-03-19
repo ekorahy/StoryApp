@@ -2,8 +2,8 @@
     <string name="app_name">StoryApp</string>
 
     <string name="welcome">Welcome to Story App.</string>
-    <string name="logout">Logout</string>
-    <string name="login">Login</string>
+    <string name="logout">Log out</string>
+    <string name="login">Log in</string>
     <string name="register">Register</string>
 
     <string name="name">Name</string>
@@ -18,15 +18,19 @@
     <string name="label_to_register">Don\'t have an account yet?</string>
     <string name="to_register"><u>register here</u></string>
 
-    <string name="label_to_login">Already have an account ?</string>
-    <string name="to_login"><u>login</u></string>
-    <string name="menuLogout">Logout</string>
+    <string name="label_to_login">Already have an account?</string>
+    <string name="to_login"><u>log in</u></string>
+    <string name="menuLogout">Log out</string>
 
-    <string name="placeholder_title">Title</string>
+    <string name="placeholder_name">Name</string>
     <string name="placeholder_desc">Description</string>
     <string name="placeholder_date">Date</string>
 
     <string name="label_Gallery">Gallery</string>
     <string name="label_Camera">Camera</string>
     <string name="label_upload">Upload</string>
+    <string name="label_detail_story">Detail Story</string>
+    <string name="label_add_story">Add New Story</string>
+    <string name="label_use_image">Use image from:</string>
+    <string name="label_or">or</string>
 </resources>

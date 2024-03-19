@@ -1,11 +1,8 @@
 package com.example.storyapp.view.login
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -41,8 +38,6 @@ class LoginActivity : AppCompatActivity() {
             factory
         }
 
-        setupView()
-
         binding.btnToRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
@@ -64,8 +59,9 @@ class LoginActivity : AppCompatActivity() {
                             val loginResult = result.data.loginResult
                             viewModel.saveSession(
                                 UserModel(
-                                    loginResult?.name.toString(),
-                                    loginResult?.token.toString()
+                                    email,
+                                    loginResult?.token.toString(),
+                                    true
                                 )
                             )
                             alertResponse(message.toString())
@@ -95,18 +91,5 @@ class LoginActivity : AppCompatActivity() {
             create()
             show()
         }
-    }
-
-    @Suppress("DEPRECATION")
-    private fun setupView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-        supportActionBar?.hide()
     }
 }
