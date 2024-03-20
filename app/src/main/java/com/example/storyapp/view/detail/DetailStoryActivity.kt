@@ -2,7 +2,6 @@ package com.example.storyapp.view.detail
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +15,7 @@ import com.example.storyapp.data.remote.response.Story
 import com.example.storyapp.databinding.ActivityDetailStoryBinding
 import com.example.storyapp.utils.convertDate
 import com.example.storyapp.view.ViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 
 class DetailStoryActivity : AppCompatActivity() {
 
@@ -38,7 +38,7 @@ class DetailStoryActivity : AppCompatActivity() {
 
         val id = intent.getStringExtra(ID)
 
-        val token = viewModel.getSession().observe(this) { user ->
+        viewModel.getSession().observe(this) { user ->
             if (user.isLogin) {
                 viewModel.getDetailStory(user.token, id.toString()).observe(this) { result ->
                     if (result != null) {
@@ -56,7 +56,7 @@ class DetailStoryActivity : AppCompatActivity() {
                             is Result.Error -> {
                                 binding.pbDetail.visibility = View.GONE
                                 val errorMessage = result.error
-                                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                                Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_SHORT).show()
                             }
                         }
                     }

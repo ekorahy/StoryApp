@@ -18,6 +18,7 @@ import com.example.storyapp.databinding.ActivityMainBinding
 import com.example.storyapp.view.ViewModelFactory
 import com.example.storyapp.view.addstory.AddStoryActivity
 import com.example.storyapp.view.login.LoginActivity
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                             is Result.Error -> {
                                 binding.pbHome.visibility = View.GONE
                                 val errorMessage = result.error
-                                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                                Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_SHORT).show()
                             }
                         }
                     }

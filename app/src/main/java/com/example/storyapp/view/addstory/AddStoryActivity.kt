@@ -21,6 +21,7 @@ import com.example.storyapp.utils.reduceFileImage
 import com.example.storyapp.utils.uriToFile
 import com.example.storyapp.view.ViewModelFactory
 import com.example.storyapp.view.main.MainActivity
+import com.google.android.material.snackbar.Snackbar
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -81,7 +82,7 @@ class AddStoryActivity : AppCompatActivity() {
             currentImageUri = uri
             showImage()
         } else {
-            Toast.makeText(this, "No Media Selected", Toast.LENGTH_SHORT).show()
+            showSnackBar("No Media Selected")
         }
     }
 
@@ -137,7 +138,7 @@ class AddStoryActivity : AppCompatActivity() {
                         }
                 }
             }
-        } ?: Toast.makeText(this, "Image not available", Toast.LENGTH_SHORT).show()
+        } ?: showSnackBar("Image not available")
     }
 
     private fun alertResponse(message: String) {
@@ -153,5 +154,9 @@ class AddStoryActivity : AppCompatActivity() {
             create()
             show()
         }
+    }
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 }
