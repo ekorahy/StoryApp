@@ -111,25 +111,30 @@ class AddStoryActivity : AppCompatActivity() {
                 requestImageFile
             )
 
-            viewModel.addNewStory(multipartBody, requestBody).observe(this) { result ->
-                if (result != null) {
-                    when (result) {
-                        is Result.Loading -> {
-                            binding.pbAddStory.visibility = View.VISIBLE
-                        }
+            viewModel.getSession().observe(this) { user ->
+                if (user.isLogin) {
+                    viewModel.addNewStory(user.token, multipartBody, requestBody)
+                        .observe(this) { result ->
+                            if (result != null) {
+                                when (result) {
+                                    is Result.Loading -> {
+                                        binding.pbAddStory.visibility = View.VISIBLE
+                                    }
 
-                        is Result.Success -> {
-                            binding.pbAddStory.visibility = View.GONE
-                            val message = result.data.message
-                            alertResponse(message.toString())
-                        }
+                                    is Result.Success -> {
+                                        binding.pbAddStory.visibility = View.GONE
+                                        val message = result.data.message
+                                        alertResponse(message.toString())
+                                    }
 
-                        is Result.Error -> {
-                            binding.pbAddStory.visibility = View.GONE
-                            val message = result.error
-                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                                    is Result.Error -> {
+                                        binding.pbAddStory.visibility = View.GONE
+                                        val message = result.error
+                                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            }
                         }
-                    }
                 }
             }
         } ?: Toast.makeText(this, "Image not available", Toast.LENGTH_SHORT).show()

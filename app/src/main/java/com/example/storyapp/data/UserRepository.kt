@@ -55,10 +55,10 @@ class UserRepository private constructor(
         }
     }
 
-    fun getStories(): LiveData<Result<StoryResponse>> = liveData {
+    fun getStories(token: String): LiveData<Result<StoryResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.getStories()
+            val response = apiService.getStories("Bearer $token")
             val listStory = response.listStory
             val error = response.error
             val message = response.message
@@ -71,29 +71,31 @@ class UserRepository private constructor(
         }
     }
 
-    fun getDetailStory(id: String): LiveData<Result<DetailStoryResponse>> = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiService.getDetailStory(id)
-            val story = response.story
-            val error = response.error
-            val message = response.message
-            emit(Result.Success(DetailStoryResponse(error, message, story)))
-        } catch (e: HttpException) {
-            val jsonInString = e.response()?.errorBody()?.string()
-            val errorBody = Gson().fromJson(jsonInString, DetailStoryResponse::class.java)
-            val errorMessage = errorBody.message
-            emit(Result.Error(errorMessage.toString()))
+    fun getDetailStory(token: String, id: String): LiveData<Result<DetailStoryResponse>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiService.getDetailStory("Bearer $token", id)
+                val story = response.story
+                val error = response.error
+                val message = response.message
+                emit(Result.Success(DetailStoryResponse(error, message, story)))
+            } catch (e: HttpException) {
+                val jsonInString = e.response()?.errorBody()?.string()
+                val errorBody = Gson().fromJson(jsonInString, DetailStoryResponse::class.java)
+                val errorMessage = errorBody.message
+                emit(Result.Error(errorMessage.toString()))
+            }
         }
-    }
 
     fun addNewStory(
+        token: String,
         photo: MultipartBody.Part,
         description: RequestBody
     ): LiveData<Result<AddStoryResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.addNewStory(photo, description)
+            val response = apiService.addNewStory("Bearer $token", photo, description)
             val error = response.error
             val message = response.message
             emit(Result.Success(AddStoryResponse(error, message)))

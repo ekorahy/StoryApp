@@ -38,23 +38,27 @@ class DetailStoryActivity : AppCompatActivity() {
 
         val id = intent.getStringExtra(ID)
 
-        viewModel.getDetailStory(id.toString()).observe(this) { result ->
-            if (result != null) {
-                when (result) {
-                    is Result.Loading -> {
-                        binding.pbDetail.visibility = View.VISIBLE
-                    }
+        val token = viewModel.getSession().observe(this) { user ->
+            if (user.isLogin) {
+                viewModel.getDetailStory(user.token, id.toString()).observe(this) { result ->
+                    if (result != null) {
+                        when (result) {
+                            is Result.Loading -> {
+                                binding.pbDetail.visibility = View.VISIBLE
+                            }
 
-                    is Result.Success -> {
-                        binding.pbDetail.visibility = View.GONE
-                        val story = result.data.story
-                        setDetailStory(story as Story)
-                    }
+                            is Result.Success -> {
+                                binding.pbDetail.visibility = View.GONE
+                                val story = result.data.story
+                                setDetailStory(story as Story)
+                            }
 
-                    is Result.Error -> {
-                        binding.pbDetail.visibility = View.GONE
-                        val errorMessage = result.error
-                        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                            is Result.Error -> {
+                                binding.pbDetail.visibility = View.GONE
+                                val errorMessage = result.error
+                                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     }
                 }
             }

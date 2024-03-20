@@ -21,7 +21,7 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
         }
     }
 
-    fun getStories(): LiveData<Result<StoryResponse>> {
-        return repository.getStories()
+    fun getStories(token: String): LiveData<Result<StoryResponse>> {
+        return repository.getStories(token)
     }
 }

@@ -35,6 +35,28 @@ class MainActivity : AppCompatActivity() {
             if (!user.isLogin) {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
+            } else {
+                viewModel.getStories(user.token).observe(this) { result ->
+                    if (result != null) {
+                        when (result) {
+                            is Result.Loading -> {
+                                binding.pbHome.visibility = View.VISIBLE
+                            }
+
+                            is Result.Success -> {
+                                binding.pbHome.visibility = View.GONE
+                                val listStory = result.data.listStory
+                                listStory?.let { setStoryData(it) }
+                            }
+
+                            is Result.Error -> {
+                                binding.pbHome.visibility = View.GONE
+                                val errorMessage = result.error
+                                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -48,28 +70,6 @@ class MainActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvStory.layoutManager = layoutManager
-
-        viewModel.getStories().observe(this) { result ->
-            if (result != null) {
-                when (result) {
-                    is Result.Loading -> {
-                        binding.pbHome.visibility = View.VISIBLE
-                    }
-
-                    is Result.Success -> {
-                        binding.pbHome.visibility = View.GONE
-                        val listStory = result.data.listStory
-                        listStory?.let { setStoryData(it) }
-                    }
-
-                    is Result.Error -> {
-                        binding.pbHome.visibility = View.GONE
-                        val errorMessage = result.error
-                        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        }
 
         binding.btnLogout.setOnClickListener {
             alertDialogLogout()

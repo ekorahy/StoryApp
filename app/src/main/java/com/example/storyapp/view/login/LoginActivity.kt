@@ -60,8 +60,7 @@ class LoginActivity : AppCompatActivity() {
                             viewModel.saveSession(
                                 UserModel(
                                     email,
-                                    loginResult?.token.toString(),
-                                    true
+                                    loginResult?.token.toString()
                                 )
                             )
                             alertResponse(message.toString())
