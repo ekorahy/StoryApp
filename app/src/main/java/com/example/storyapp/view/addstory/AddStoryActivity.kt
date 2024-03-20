@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -131,7 +130,7 @@ class AddStoryActivity : AppCompatActivity() {
                                     is Result.Error -> {
                                         binding.pbAddStory.visibility = View.GONE
                                         val message = result.error
-                                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                                        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
                                     }
                                 }
                             }
