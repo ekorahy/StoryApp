@@ -1,5 +1,7 @@
 package com.example.storyapp.view.register
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -36,6 +38,8 @@ class RegisterActivity : AppCompatActivity() {
             factory
         }
 
+        playAnimation()
+
         binding.btnRegister.setOnClickListener {
             val name = binding.edRegisterName.text.toString()
             val email = binding.edRegisterEmail.text.toString()
@@ -66,6 +70,24 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.btnToLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+        }
+    }
+
+    private fun playAnimation() {
+        val title = ObjectAnimator.ofFloat(binding.tvTitle, View.ALPHA, 1f).setDuration(500)
+        val desc = ObjectAnimator.ofFloat(binding.tvDesc, View.ALPHA, 1f).setDuration(500)
+        val name =
+            ObjectAnimator.ofFloat(binding.edRegisterNameLayout, View.ALPHA, 1f).setDuration(500)
+        val email =
+            ObjectAnimator.ofFloat(binding.edRegisterEmailLayout, View.ALPHA, 1f).setDuration(500)
+        val password = ObjectAnimator.ofFloat(binding.edRegisterPasswordLayout, View.ALPHA, 1f)
+            .setDuration(500)
+        val button = ObjectAnimator.ofFloat(binding.btnRegister, View.ALPHA, 1f).setDuration(500)
+        val toLogin = ObjectAnimator.ofFloat(binding.tvToLogin, View.ALPHA, 1f).setDuration(500)
+
+        AnimatorSet().apply {
+            playSequentially(title, desc, name, email, password, button, toLogin)
+            start()
         }
     }
 

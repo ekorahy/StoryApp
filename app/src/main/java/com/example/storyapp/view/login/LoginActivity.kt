@@ -1,5 +1,7 @@
 package com.example.storyapp.view.login
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -38,6 +40,8 @@ class LoginActivity : AppCompatActivity() {
             factory
         }
 
+        playAnimation()
+
         binding.btnToRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
@@ -74,6 +78,23 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    private fun playAnimation() {
+        val label = ObjectAnimator.ofFloat(binding.tvTitle, View.ALPHA, 1f).setDuration(500)
+        val desc = ObjectAnimator.ofFloat(binding.tvDesc, View.ALPHA, 1f).setDuration(500)
+        val email =
+            ObjectAnimator.ofFloat(binding.edLoginEmailLayout, View.ALPHA, 1f).setDuration(500)
+        val password =
+            ObjectAnimator.ofFloat(binding.edLoginPasswordLayout, View.ALPHA, 1f).setDuration(500)
+        val button = ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1f).setDuration(500)
+        val toRegister =
+            ObjectAnimator.ofFloat(binding.tvToRegister, View.ALPHA, 1f).setDuration(500)
+
+        AnimatorSet().apply {
+            playSequentially(label, desc, email, password, button, toRegister)
+            start()
         }
     }
 
