@@ -36,6 +36,9 @@ class UserRepository private constructor(
             val errorBody = Gson().fromJson(jsonInString, RegisterResponse::class.java)
             val errorMessage = errorBody.message
             emit(Result.Error(errorMessage.toString()))
+        } catch (e: Exception) {
+            val message = e.message
+            emit(Result.Error(message.toString()))
         }
     }
 
@@ -52,6 +55,9 @@ class UserRepository private constructor(
             val errorBody = Gson().fromJson(jsonInString, LoginResponse::class.java)
             val errorMessage = errorBody.message
             emit(Result.Error(errorMessage.toString()))
+        } catch (e: Exception) {
+            val message = e.message
+            emit(Result.Error(message.toString()))
         }
     }
 
@@ -68,6 +74,9 @@ class UserRepository private constructor(
             val errorBody = Gson().fromJson(jsonInString, StoryResponse::class.java)
             val errorMessage = errorBody.message
             emit(Result.Error(errorMessage.toString()))
+        } catch (e: Exception) {
+            val message = e.message
+            emit(Result.Error(message.toString()))
         }
     }
 
@@ -85,6 +94,9 @@ class UserRepository private constructor(
                 val errorBody = Gson().fromJson(jsonInString, DetailStoryResponse::class.java)
                 val errorMessage = errorBody.message
                 emit(Result.Error(errorMessage.toString()))
+            } catch (e: Exception) {
+                val message = e.message
+                emit(Result.Error(message.toString()))
             }
         }
 
@@ -104,6 +116,9 @@ class UserRepository private constructor(
             val errorBody = Gson().fromJson(jsonInString, AddStoryResponse::class.java)
             val errorMessage = errorBody.message
             emit(Result.Error(errorMessage.toString()))
+        } catch (e: Exception) {
+            val message = e.message
+            emit(Result.Error(message.toString()))
         }
     }
 
