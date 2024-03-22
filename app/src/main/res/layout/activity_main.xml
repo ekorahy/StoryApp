@@ -7,6 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".view.main.MainActivity">
 
+    <ImageView
+        android:id="@+id/iv_no_data"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:elevation="2dp"
+        android:src="@drawable/iv_no_data"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar" />
+
     <LinearLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -55,6 +67,7 @@
     </LinearLayout>
 
     <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/materialDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         app:layout_constraintEnd_toEndOf="parent"
