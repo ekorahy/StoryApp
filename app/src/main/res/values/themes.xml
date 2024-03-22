@@ -47,6 +47,10 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
+
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowEnterTransition">@android:transition/fade</item>
+        <item name="android:windowExitTransition">@android:transition/fade</item>
     </style>
 
     <style name="Theme.StoryApp" parent="Base.Theme.StoryApp" />

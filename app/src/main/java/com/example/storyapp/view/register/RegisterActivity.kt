@@ -4,11 +4,13 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.storyapp.R
@@ -68,12 +70,21 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
+        binding.btnTranslate.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
+
         binding.btnToLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(
+                Intent(this, LoginActivity::class.java),
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle()
+            )
         }
     }
 
     private fun playAnimation() {
+        val btnTranslate =
+            ObjectAnimator.ofFloat(binding.btnTranslate, View.ALPHA, 1f).setDuration(500)
         val title = ObjectAnimator.ofFloat(binding.tvTitle, View.ALPHA, 1f).setDuration(500)
         val desc = ObjectAnimator.ofFloat(binding.tvDesc, View.ALPHA, 1f).setDuration(500)
         val name =
@@ -86,7 +97,7 @@ class RegisterActivity : AppCompatActivity() {
         val toLogin = ObjectAnimator.ofFloat(binding.tvToLogin, View.ALPHA, 1f).setDuration(500)
 
         AnimatorSet().apply {
-            playSequentially(title, desc, name, email, password, button, toLogin)
+            playSequentially(btnTranslate, title, desc, name, email, password, button, toLogin)
             start()
         }
     }

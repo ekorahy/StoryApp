@@ -2,12 +2,13 @@ package com.example.storyapp.view.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,7 +35,9 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
-                startActivity(Intent(this, LoginActivity::class.java))
+                startActivity(
+                    Intent(this, LoginActivity::class.java)
+                )
                 finish()
             } else {
                 viewModel.getStories(user.token).observe(this) { result ->
@@ -53,7 +56,8 @@ class MainActivity : AppCompatActivity() {
                             is Result.Error -> {
                                 binding.pbHome.visibility = View.GONE
                                 val errorMessage = result.error
-                                Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_SHORT).show()
+                                Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_SHORT)
+                                    .show()
                             }
                         }
                     }
@@ -72,13 +76,20 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.rvStory.layoutManager = layoutManager
 
+        binding.btnTranslate.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
+
         binding.btnLogout.setOnClickListener {
             alertDialogLogout()
         }
 
         binding.fabAddStory.setOnClickListener {
             val intent = Intent(this, AddStoryActivity::class.java)
-            startActivity(intent)
+            startActivity(
+                intent,
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle()
+            )
         }
     }
 

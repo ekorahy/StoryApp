@@ -32,11 +32,25 @@
             android:layout_weight="1" />
 
         <Button
+            android:id="@+id/btn_translate"
+            style="?attr/materialIconButtonFilledTonalStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:icon="@drawable/ic_translate"
+            app:iconGravity="textStart"
+            app:iconSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
+
+        <Button
             android:id="@+id/btn_logout"
             style="?attr/materialIconButtonFilledTonalStyle"
-            android:layout_width="42dp"
+            android:layout_width="40dp"
             android:layout_height="40dp"
             app:icon="@drawable/ic_logout"
+            app:iconGravity="textStart"
+            app:iconSize="18dp"
             tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
     </LinearLayout>
 
@@ -77,6 +91,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:src="@drawable/ic_add"
+        app:iconGravity="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

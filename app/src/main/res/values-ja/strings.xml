@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">StoryApp</string>
+
+    <string name="welcome">StoryApp へようこそ。</string>
+    <string name="logout">外出</string>
+    <string name="login">入力</string>
+    <string name="register">リスト</string>
+
+    <string name="name">名前</string>
+    <string name="email">Eメール</string>
+    <string name="password">パスワード</string>
+
+    <string name="login_title">入力。</string>
+    <string name="login_body">登録したアカウントを使用してログインしてください。</string>
+    <string name="register_title">リスト。</string>
+    <string name="register_body">あなたの身元を入力してください。</string>
+
+    <string name="label_to_register">まだアカウントをお持ちでない場合は、</string>
+    <string name="to_register"><u>ここに登録</u></string>
+
+    <string name="label_to_login">すでにアカウントをお持ちですか？</string>
+    <string name="to_login"><u>入力</u></string>
+    <string name="menuLogout">外出</string>
+
+    <string name="placeholder_name">名前</string>
+    <string name="placeholder_desc">説明</string>
+    <string name="placeholder_date">日付</string>
+
+    <string name="label_Gallery">ギャラリー</string>
+    <string name="label_Camera">カメラ</string>
+    <string name="label_upload">アップロード</string>
+    <string name="label_detail_story">ストーリーの詳細</string>
+    <string name="label_add_story">新しいストーリーを追加</string>
+    <string name="label_use_image">以下の画像を使用します。</string>
+    <string name="label_or">または</string>
+</resources>

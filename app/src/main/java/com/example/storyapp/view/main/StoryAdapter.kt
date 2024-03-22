@@ -1,8 +1,11 @@
 package com.example.storyapp.view.main
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -24,11 +27,6 @@ class StoryAdapter : ListAdapter<ListStoryItem, StoryAdapter.StoryViewHolder>(DI
     override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
         val story = getItem(position)
         holder.bind(story)
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailStoryActivity::class.java)
-            intent.putExtra(ID, story.id)
-            holder.itemView.context.startActivity(intent)
-        }
     }
 
     class StoryViewHolder(private val binding: ItemStoryBinding) :
@@ -41,6 +39,19 @@ class StoryAdapter : ListAdapter<ListStoryItem, StoryAdapter.StoryViewHolder>(DI
                     .into(ivStory)
                 tvName.text = story.name
                 tvDesc.text = story.description
+            }
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailStoryActivity::class.java)
+                intent.putExtra(ID, story.id)
+                val optionsCompat: ActivityOptionsCompat =
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        itemView.context as Activity,
+                        Pair(binding.ivStory, "ivStory"),
+                        Pair(binding.tvName, "tvName"),
+                        Pair(binding.tvDesc, "tvDesc")
+                    )
+                itemView.context.startActivity(intent, optionsCompat.toBundle())
             }
         }
     }
