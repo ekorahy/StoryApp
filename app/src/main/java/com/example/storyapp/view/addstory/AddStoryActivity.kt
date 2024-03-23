@@ -34,7 +34,6 @@ class AddStoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddStoryBinding
 
-    private var currentImageUri: Uri? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -47,6 +46,10 @@ class AddStoryActivity : AppCompatActivity() {
             insets
         }
 
+        viewModel.currentImageUri.observe(this) { uri ->
+            showImage(uri)
+        }
+
         binding.btnGallery.setOnClickListener {
             startGallery()
         }
@@ -57,7 +60,7 @@ class AddStoryActivity : AppCompatActivity() {
 
         binding.btnUpload.setOnClickListener {
             val description = binding.edDescription.text.toString()
-            uploadImage(description)
+            uploadImage(viewModel.currentImageUri.value, description)
         }
 
         binding.btnBack.setOnClickListener {
@@ -70,18 +73,19 @@ class AddStoryActivity : AppCompatActivity() {
     }
 
     private fun startCamera() {
-        currentImageUri = getImageUri(this)
-        launcherIntentCamera.launch(currentImageUri)
+        viewModel.setImageUriCamera(getImageUri(this))
+        launcherIntentCamera.launch(getImageUri(this))
     }
 
     private val launcherGallery = registerForActivityResult(
         ActivityResultContracts.PickVisualMedia()
     ) { uri: Uri? ->
         if (uri != null) {
-            currentImageUri = uri
-            showImage()
+            viewModel.setCurrentImageUri(uri)
         } else {
-            showSnackBar("No Media Selected")
+            if (viewModel.currentImageUri.value == null) {
+                showSnackBar("No Media Selected")
+            }
         }
     }
 
@@ -89,18 +93,22 @@ class AddStoryActivity : AppCompatActivity() {
         ActivityResultContracts.TakePicture()
     ) { isSuccess ->
         if (isSuccess) {
-            showImage()
+            viewModel.imageUriCamera.value?.let { viewModel.setCurrentImageUri(it) }
+        } else {
+            if (viewModel.currentImageUri.value == null) {
+                showSnackBar("No picture taken yet")
+            }
         }
     }
 
-    private fun showImage() {
-        currentImageUri?.let {
-            binding.ivPreview.setImageURI(it)
+    private fun showImage(uri: Uri?) {
+        if (uri != null) {
+            binding.ivPreview.setImageURI(uri)
         }
     }
 
-    private fun uploadImage(description: String) {
-        currentImageUri?.let { uri ->
+    private fun uploadImage(uri: Uri?, description: String) {
+        if (uri != null) {
             val imageFile = uriToFile(uri, this).reduceFileImage()
 
             val requestBody = description.toRequestBody("text/plain".toMediaType())
@@ -130,14 +138,17 @@ class AddStoryActivity : AppCompatActivity() {
                                     is Result.Error -> {
                                         binding.pbAddStory.visibility = View.GONE
                                         val message = result.error
-                                        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+                                        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+                                            .show()
                                     }
                                 }
                             }
                         }
                 }
             }
-        } ?: showSnackBar("Image not available")
+        } else {
+            showSnackBar("Image not available")
+        }
     }
 
     private fun alertResponse(message: String) {
