@@ -10,6 +10,7 @@ import com.example.storyapp.view.detail.DetailStoryViewModel
 import com.example.storyapp.view.login.LoginViewModel
 import com.example.storyapp.view.main.MainViewModel
 import com.example.storyapp.view.register.RegisterViewModel
+import com.example.storyapp.view.splash.SplashScreenViewModel
 
 class ViewModelFactory(private val repository: UserRepository) :
     ViewModelProvider.NewInstanceFactory() {
@@ -17,6 +18,10 @@ class ViewModelFactory(private val repository: UserRepository) :
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
+
+            modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> {
+                SplashScreenViewModel(repository) as T
+            }
 
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repository) as T

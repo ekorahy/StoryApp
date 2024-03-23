@@ -33,13 +33,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
         viewModel.getSession().observe(this) { user ->
-            if (!user.isLogin) {
-                startActivity(
-                    Intent(this, LoginActivity::class.java)
-                )
-                finish()
-            } else {
+            if (user != null) {
                 viewModel.getStories(user.token).observe(this) { result ->
                     if (result != null) {
                         when (result) {
@@ -65,14 +68,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-        }
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
         }
 
         val layoutManager = LinearLayoutManager(this)
@@ -107,7 +102,7 @@ class MainActivity : AppCompatActivity() {
             setMessage("Are you sure, you want to log out?")
             setPositiveButton("Yes") { _, _ ->
                 viewModel.logout()
-                val intent = Intent(context, MainActivity::class.java)
+                val intent = Intent(context, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 finish()
