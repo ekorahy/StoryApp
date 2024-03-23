@@ -33,5 +33,6 @@
     <string name="label_add_story">Add New Story</string>
     <string name="label_use_image">Use image from:</string>
     <string name="label_or">or</string>
-    <string name="app_developer">StoryApp by ekorahy</string>
+    <string name="app_developer">ekorahy</string>
+    <string name="label_by">by</string>
 </resources>

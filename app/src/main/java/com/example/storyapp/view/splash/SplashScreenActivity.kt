@@ -44,11 +44,16 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun playAnimation() {
         val ivLogo = ObjectAnimator.ofFloat(binding.ivLogo, View.ALPHA, 1f).setDuration(2000)
+        val tvLabelBy = ObjectAnimator.ofFloat(binding.tvLabelBy, View.ALPHA, 1f).setDuration(2000)
         val tvAppDeveloper =
-            ObjectAnimator.ofFloat(binding.tvAppDeveloper, View.ALPHA, 1f).setDuration(1000)
+            ObjectAnimator.ofFloat(binding.tvAppDeveloper, View.ALPHA, 1f).setDuration(2000)
+
+        val together = AnimatorSet().apply {
+            playTogether(tvLabelBy, tvAppDeveloper)
+        }
 
         AnimatorSet().apply {
-            playSequentially(ivLogo, tvAppDeveloper)
+            playSequentially(ivLogo, together)
             addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     onAnimationFinished()

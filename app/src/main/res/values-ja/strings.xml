@@ -34,4 +34,5 @@
     <string name="label_use_image">以下の画像を使用します。</string>
     <string name="label_or">または</string>
     <string name="app_developer">StoryApp by ekorahy</string>
+    <string name="label_by">by</string>
 </resources>

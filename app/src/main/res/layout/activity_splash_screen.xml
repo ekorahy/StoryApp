@@ -21,18 +21,32 @@
         tools:alpha="100" />
 
     <TextView
+        android:id="@+id/tv_label_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:fontFamily="@font/google_sans_thin"
+        android:text="@string/label_by"
+        android:textColor="@color/md_theme_onPrimary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_app_developer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:alpha="100" />
+
+    <TextView
         android:id="@+id/tv_app_developer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:alpha="0"
-        android:fontFamily="@font/google_sans_thin"
+        android:fontFamily="@font/google_sans_bold"
         android:text="@string/app_developer"
         android:textColor="@color/md_theme_onPrimary"
-        android:textSize="16sp"
+        android:textSize="20sp"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:alpha="100" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
