@@ -33,6 +33,18 @@
     <string name="label_add_story">新しいストーリーを追加</string>
     <string name="label_use_image">以下の画像を使用します。</string>
     <string name="label_or">または</string>
-    <string name="app_developer">StoryApp by ekorahy</string>
+    <string name="app_developer">ekorahy</string>
     <string name="label_by">by</string>
+
+    <!-- content Description -->
+    <string name="image_preview">画像プレビュー</string>
+    <string name="icon_date">日付アイコン</string>
+    <string name="image_story">画像ストーリー</string>
+    <string name="button_translate">翻訳ボタン</string>
+    <string name="button_back">戻るボタン</string>
+    <string name="button_logout">ログアウトボタン</string>
+    <string name="illustration_no_data">データがありませんのイラスト</string>
+    <string name="fab_add">新しいストーリーを追加するフローティングアクションボタン</string>
+    <string name="image_logo">アプリのロゴ画像</string>
+
 </resources>

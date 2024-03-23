@@ -33,6 +33,18 @@
     <string name="label_add_story">Tambah Cerita Baru</string>
     <string name="label_use_image">gunakan gambar dari:</string>
     <string name="label_or">atau</string>
-    <string name="app_developer">StoryApp by ekorahy</string>
-    <string name="label_by">by</string>
+    <string name="app_developer">ekorahy</string>
+    <string name="label_by">oleh</string>
+
+    <!-- content Description -->
+    <string name="image_preview">Pratinjau gambar</string>
+    <string name="icon_date">Ikon tanggal</string>
+    <string name="image_story">Cerita gambar</string>
+    <string name="button_translate">Tombol terjemahkan</string>
+    <string name="button_back">Tombol kembali</string>
+    <string name="button_logout">Tombol keluar</string>
+    <string name="illustration_no_data">Ilustrasi tidak ada data</string>
+    <string name="fab_add">Tombol tindakan mengambang tambahkan cerita baru</string>
+    <string name="image_logo">Gambar logo aplikasi</string>
+
 </resources>
