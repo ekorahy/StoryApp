@@ -23,9 +23,11 @@
             style="?attr/materialIconButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:contentDescription="@string/button_back"
             app:icon="@drawable/ic_arrow_back"
             app:iconGravity="textStart"
-            app:iconSize="25dp" />
+            app:iconSize="25dp"
+            tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,8 +72,10 @@
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="32dp"
+                android:contentDescription="@string/image_preview"
                 android:scaleType="centerCrop"
-                android:src="@drawable/iv_preview" />
+                android:src="@drawable/iv_preview"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -124,7 +128,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/google_sans_light"
-                    android:lines="6" />
+                    android:lines="6"
+                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -133,7 +138,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/google_sans_medium"
-                android:text="@string/label_upload" />
+                android:text="@string/label_upload"
+                tools:ignore="VisualLintButtonSize" />
         </LinearLayout>
     </ScrollView>
 

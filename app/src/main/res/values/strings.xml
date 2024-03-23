@@ -35,4 +35,15 @@
     <string name="label_or">or</string>
     <string name="app_developer">ekorahy</string>
     <string name="label_by">by</string>
+
+    <!-- content Description -->
+    <string name="image_preview">Image preview</string>
+    <string name="icon_date">Icon date</string>
+    <string name="image_story">Image story</string>
+    <string name="button_translate">Button translate</string>
+    <string name="button_back">Button back</string>
+    <string name="button_logout">Button logout</string>
+    <string name="illustration_no_data">Illustration no data</string>
+    <string name="fab_add">Floating action button add new story</string>
+    <string name="image_logo">Image logo application</string>
 </resources>

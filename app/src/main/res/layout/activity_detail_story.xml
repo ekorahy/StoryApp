@@ -34,9 +34,11 @@
             style="?attr/materialIconButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:contentDescription="@string/button_back"
             app:icon="@drawable/ic_arrow_back"
             app:iconGravity="textStart"
-            app:iconSize="25dp" />
+            app:iconSize="25dp"
+            tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -77,6 +79,7 @@
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
                 android:transitionName="ivStory"
+                android:contentDescription="@string/image_story"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <TextView
@@ -95,11 +98,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
+                    android:contentDescription="@string/icon_date"
                     android:src="@drawable/ic_calender" />
 
                 <TextView

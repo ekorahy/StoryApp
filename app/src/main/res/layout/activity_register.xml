@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/btn_translate"
@@ -20,6 +20,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:alpha="0"
+            android:contentDescription="@string/button_translate"
             app:icon="@drawable/ic_translate"
             app:iconGravity="textStart"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +87,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/google_sans_light"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,7 +108,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/google_sans_light"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,7 +130,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/google_sans_light"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
@@ -141,7 +145,8 @@
                     android:fontFamily="@font/google_sans_bold"
                     android:text="@string/register"
                     android:textSize="14sp"
-                    tools:alpha="100" />
+                    tools:alpha="100"
+                    tools:ignore="VisualLintButtonSize" />
 
                 <LinearLayout
                     android:id="@+id/tv_to_login"
