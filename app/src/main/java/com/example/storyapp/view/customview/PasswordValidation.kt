@@ -1,4 +1,4 @@
-package com.example.storyapp.customview
+package com.example.storyapp.view.customview
 
 import android.content.Context
 import android.text.Editable
@@ -36,7 +36,7 @@ class PasswordValidation : AppCompatEditText {
                 if (s.toString().length < 8) {
                     val drawable = ContextCompat.getDrawable(context, R.drawable.ic_error)
                     drawable?.setBounds(0, 0, drawable.intrinsicWidth, drawable.intrinsicHeight)
-                    setError("Password cannot less than 8 character", drawable)
+                    setError(resources.getString(R.string.password_must_lest_than_eight), drawable)
                 } else {
                     error = null
                 }

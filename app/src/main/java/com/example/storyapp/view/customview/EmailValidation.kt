@@ -1,4 +1,4 @@
-package com.example.storyapp.customview
+package com.example.storyapp.view.customview
 
 import android.content.Context
 import android.text.Editable
@@ -38,7 +38,7 @@ class EmailValidation : AppCompatEditText {
                 if (TextUtils.isEmpty(email) || !isValidEmail(email)) {
                     val drawable = ContextCompat.getDrawable(context, R.drawable.ic_error)
                     drawable?.setBounds(0, 0, drawable.intrinsicWidth, drawable.intrinsicHeight)
-                    setError("Email not valid", drawable)
+                    setError(resources.getString(R.string.email_not_valid), drawable)
                 } else {
                     error = null
                 }

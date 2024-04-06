@@ -1,6 +1,6 @@
 [versions]
 agp = "8.3.1"
-kotlin = "1.9.22"
+kotlin = "1.9.23"
 coreKtx = "1.12.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
@@ -13,14 +13,26 @@ datastorePreferences = "1.0.0"
 lifecycleViewmodelKtx = "2.7.0"
 lifecycleLivedataKtx = "2.7.0"
 activityKtx = "1.8.2"
-retrofit = "2.9.0"
-converterGson = "2.9.0"
-loggingInterceptor = "4.11.0"
+retrofit = "2.11.0"
+converterGson = "2.11.0"
+loggingInterceptor = "4.12.0"
 lifecycleRuntimeKtx = "2.7.0"
 kotlinParcelize = "1.9.0"
 glide = "4.16.0"
 generativeai = "0.2.2"
 exifinterface = "1.3.7"
+googleAndroidLibrariesMapsplatformSecretsGradlePlugin = "2.0.1"
+playServicesMaps = "18.2.0"
+pagingRuntimeKtx = "3.2.1"
+playServicesLocation = "21.2.0"
+roomPaging = "2.6.1"
+roomKtx = "2.6.1"
+roomCompiler = "2.6.1"
+devtoolsKsp = "1.9.23-1.0.19"
+coreTesting = "2.2.0"
+kotlinxCoroutinesTest = "1.7.3"
+mockitoCore = "5.6.0"
+mockitoInline = "5.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,10 +53,23 @@ squareup-okhttp3-logging-interceptor = { group = "com.squareup.okhttp3", name = 
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 generativeai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeai" }
-exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exifinterface"}
+exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exifinterface" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+androidx-paging = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "pagingRuntimeKtx"}
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation"}
+androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "roomPaging"}
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx"}
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler"}
+core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "coreTesting"}
+kotlinx-coroutine-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest"}
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoCore"}
+mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline"}
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinParcelize" }
+googleAndroidLibrariesMapsplatformSecretsGradlePlugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "googleAndroidLibrariesMapsplatformSecretsGradlePlugin" }
+devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "devtoolsKsp"}
 

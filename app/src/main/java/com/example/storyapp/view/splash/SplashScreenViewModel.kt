@@ -3,11 +3,11 @@ package com.example.storyapp.view.splash
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.example.storyapp.data.UserRepository
-import com.example.storyapp.data.pref.UserModel
+import com.example.storyapp.repository.UserRepository
+import com.example.storyapp.data.pref.user.UserModel
 
-class SplashScreenViewModel(private val repository: UserRepository) : ViewModel() {
+class SplashScreenViewModel(private val userRepository: UserRepository) : ViewModel() {
     fun getSession(): LiveData<UserModel> {
-        return repository.getSession().asLiveData()
+        return userRepository.getSession().asLiveData()
     }
 }

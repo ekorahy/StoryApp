@@ -81,7 +81,7 @@
                     app:startIconDrawable="@drawable/ic_mail"
                     tools:alpha="100">
 
-                    <com.example.storyapp.customview.EmailValidation
+                    <com.example.storyapp.view.customview.EmailValidation
                         android:id="@+id/ed_login_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
                     app:startIconDrawable="@drawable/ic_lock"
                     tools:alpha="100">
 
-                    <com.example.storyapp.customview.PasswordValidation
+                    <com.example.storyapp.view.customview.PasswordValidation
                         android:id="@+id/ed_login_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

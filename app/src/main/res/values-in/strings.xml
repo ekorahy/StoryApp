@@ -35,6 +35,34 @@
     <string name="label_or">atau</string>
     <string name="app_developer">ekorahy</string>
     <string name="label_by">oleh</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="try_again">Coba lagi</string>
+    <string name="time_out">Waktu Habis</string>
+    <string name="label_map_story">Cerita Peta</string>
+    <string name="location_activated">Pengaturan lokasi telah diaktifkan</string>
+    <string name="enable_gps">Anda harus mengaktifkan GPS untuk membuat cerita dengan lokasi!</string>
+    <string name="get_my_location">Berhasil mendapatkan lokasi.\n Lintang: %1f, Bujur: %2f</string>
+    <string name="location_not_found">Lokasi tidak ditemukan. Silakan coba lagi</string>
+    <string name="no_media_selected">Tidak Ada Media Dipilih</string>
+    <string name="no_picture_taken">Belum ada gambar yang diambil</string>
+    <string name="image_not_available">Gambar tidak tersedia</string>
+    <string name="success">Berhasil</string>
+    <string name="ok">Oke</string>
+    <string name="style_parsing_failed">Gagal mengurai gaya</string>
+    <string name="cannot_found_style">Tidak dapat menemukan gaya. Kesalahan: %s</string>
+    <string name="email_not_valid">Email tidak valid</string>
+    <string name="password_must_lest_than_eight">Kata sandi tidak boleh kurang dari 8 karakter</string>
+    <string name="successfully_login">Anda berhasil masuk</string>
+    <string name="confirmation">Konfirmasi!</string>
+    <string name="confirmation_message_logout">Apakah Anda yakin ingin keluar?</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="no_data_location">Tidak ada data lokasi</string>
+    <string name="use_my_location">Gunakan lokasi saya</string>
+    <string name="normal">Normal</string>
+    <string name="satellite">Satelit</string>
+    <string name="terrain">Terrain</string>
+    <string name="hybrid">Hybrid</string>
 
     <!-- content Description -->
     <string name="image_preview">Pratinjau gambar</string>

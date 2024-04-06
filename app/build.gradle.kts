@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin)
+    alias(libs.plugins.devtools.ksp)
 }
 
 android {
@@ -40,6 +42,9 @@ android {
         viewBinding = true
         buildConfig = true
     }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -60,7 +65,17 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.exifinterface)
     implementation(libs.generativeai)
+    implementation(libs.play.services.maps)
+    implementation(libs.androidx.paging)
+    implementation(libs.play.services.location)
+    implementation(libs.androidx.room.paging)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
     testImplementation(libs.junit)
+    testImplementation(libs.core.testing)
+    testImplementation(libs.kotlinx.coroutine.test)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

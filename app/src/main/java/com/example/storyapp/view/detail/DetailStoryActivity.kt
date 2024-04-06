@@ -14,13 +14,13 @@ import com.example.storyapp.data.Result
 import com.example.storyapp.data.remote.response.Story
 import com.example.storyapp.databinding.ActivityDetailStoryBinding
 import com.example.storyapp.utils.convertDate
-import com.example.storyapp.view.ViewModelFactory
+import com.example.storyapp.view.ViewModelFactoryStory
 import com.google.android.material.snackbar.Snackbar
 
 class DetailStoryActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<DetailStoryViewModel> {
-        ViewModelFactory.getInstance(this)
+        ViewModelFactoryStory.getInstance(this)
     }
 
     private lateinit var binding: ActivityDetailStoryBinding
@@ -38,27 +38,24 @@ class DetailStoryActivity : AppCompatActivity() {
 
         val id = intent.getStringExtra(ID)
 
-        viewModel.getSession().observe(this) { user ->
-            if (user.isLogin) {
-                viewModel.getDetailStory(user.token, id.toString()).observe(this) { result ->
-                    if (result != null) {
-                        when (result) {
-                            is Result.Loading -> {
-                                binding.pbDetail.visibility = View.VISIBLE
-                            }
+        viewModel.getDetailStory(id.toString()).observe(this) { result ->
+            if (result != null) {
+                when (result) {
+                    is Result.Loading -> {
+                        binding.pbDetail.visibility = View.VISIBLE
+                    }
 
-                            is Result.Success -> {
-                                binding.pbDetail.visibility = View.GONE
-                                val story = result.data.story
-                                setDetailStory(story as Story)
-                            }
+                    is Result.Success -> {
+                        binding.pbDetail.visibility = View.GONE
+                        val story = result.data.story
+                        setDetailStory(story as Story)
+                    }
 
-                            is Result.Error -> {
-                                binding.pbDetail.visibility = View.GONE
-                                val errorMessage = result.error
-                                Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_SHORT).show()
-                            }
-                        }
+                    is Result.Error -> {
+                        binding.pbDetail.visibility = View.GONE
+                        val errorMessage = result.error
+                        Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }

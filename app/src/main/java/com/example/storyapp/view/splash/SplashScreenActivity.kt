@@ -15,7 +15,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.storyapp.R
 import com.example.storyapp.databinding.ActivitySplashScreenBinding
-import com.example.storyapp.view.ViewModelFactory
+import com.example.storyapp.view.ViewModelFactoryAuthentication
 import com.example.storyapp.view.login.LoginActivity
 import com.example.storyapp.view.main.MainActivity
 
@@ -23,7 +23,7 @@ import com.example.storyapp.view.main.MainActivity
 class SplashScreenActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<SplashScreenViewModel> {
-        ViewModelFactory.getInstance(this)
+        ViewModelFactoryAuthentication.getInstance(this)
     }
 
     private lateinit var binding: ActivitySplashScreenBinding

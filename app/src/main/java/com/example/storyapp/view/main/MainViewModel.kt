@@ -1,27 +1,25 @@
 package com.example.storyapp.view.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
-import com.example.storyapp.data.Result
-import com.example.storyapp.data.UserRepository
-import com.example.storyapp.data.pref.UserModel
-import com.example.storyapp.data.remote.response.StoryResponse
+import androidx.lifecycle.*
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.example.storyapp.repository.StoryRepository
+import com.example.storyapp.data.pref.user.UserModel
+import com.example.storyapp.data.remote.response.ListStoryItem
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: UserRepository) : ViewModel() {
+class MainViewModel(private val storyRepository: StoryRepository) : ViewModel() {
+
+    val story: LiveData<PagingData<ListStoryItem>> =
+        storyRepository.getStories().cachedIn(viewModelScope)
+
     fun getSession(): LiveData<UserModel> {
-        return repository.getSession().asLiveData()
+        return storyRepository.getSession().asLiveData()
     }
 
     fun logout() {
         viewModelScope.launch {
-            repository.logout()
+            storyRepository.logout()
         }
-    }
-
-    fun getStories(token: String): LiveData<Result<StoryResponse>> {
-        return repository.getStories(token)
     }
 }

@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.storyapp.R
 import com.example.storyapp.data.Result
 import com.example.storyapp.databinding.ActivityRegisterBinding
-import com.example.storyapp.view.ViewModelFactory
+import com.example.storyapp.view.ViewModelFactoryAuthentication
 import com.example.storyapp.view.login.LoginActivity
 import com.google.android.material.snackbar.Snackbar
 
@@ -35,7 +35,8 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
 
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+        val factory: ViewModelFactoryAuthentication =
+            ViewModelFactoryAuthentication.getInstance(this)
         val viewModel: RegisterViewModel by viewModels {
             factory
         }
@@ -104,9 +105,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun alertResponse(message: String) {
         AlertDialog.Builder(this).apply {
-            setTitle("Success")
+            setTitle(getString(R.string.success))
             setMessage(message)
-            setPositiveButton("Ok") { _, _ ->
+            setPositiveButton(getString(R.string.ok)) { _, _ ->
                 finish()
             }
             create()

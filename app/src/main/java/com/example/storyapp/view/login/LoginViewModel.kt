@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.storyapp.data.Result
-import com.example.storyapp.data.UserRepository
-import com.example.storyapp.data.pref.UserModel
+import com.example.storyapp.repository.UserRepository
+import com.example.storyapp.data.pref.user.UserModel
 import com.example.storyapp.data.remote.response.LoginResponse
 import kotlinx.coroutines.launch
 

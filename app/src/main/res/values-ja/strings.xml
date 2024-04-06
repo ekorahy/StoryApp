@@ -35,6 +35,34 @@
     <string name="label_or">または</string>
     <string name="app_developer">ekorahy</string>
     <string name="label_by">by</string>
+    <string name="title_activity_maps">マップアクティビティ</string>
+    <string name="try_again">もう一度やり直す</string>
+    <string name="time_out">タイムアウト</string>
+    <string name="label_map_story">マップストーリー</string>
+    <string name="location_activated">位置情報設定が有効になっています</string>
+    <string name="enable_gps">位置情報を利用してストーリーを作成するには、GPSを有効にする必要があります！</string>
+    <string name="get_my_location">場所を取得しました。\n 緯度：%1f、経度：%2f</string>
+    <string name="location_not_found">場所が見つかりません。もう一度お試しください</string>
+    <string name="no_media_selected">メディアが選択されていません</string>
+    <string name="no_picture_taken">まだ写真を撮っていません</string>
+    <string name="image_not_available">画像が利用できません</string>
+    <string name="success">成功</string>
+    <string name="ok">はい</string>
+    <string name="style_parsing_failed">スタイルの解析に失敗しました</string>
+    <string name="cannot_found_style">スタイルが見つかりません。エラー：%s</string>
+    <string name="email_not_valid">無効なメールアドレス</string>
+    <string name="password_must_lest_than_eight">パスワードは8文字未満にすることはできません</string>
+    <string name="successfully_login">ログインに成功しました</string>
+    <string name="confirmation">確認！</string>
+    <string name="confirmation_message_logout">ログアウトしてもよろしいですか？</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+    <string name="no_data_location">データがありません</string>
+    <string name="use_my_location">現在位置を使用</string>
+    <string name="normal">通常</string>
+    <string name="satellite">衛星</string>
+    <string name="terrain">地形</string>
+    <string name="hybrid">ハイブリッド</string>
 
     <!-- content Description -->
     <string name="image_preview">画像プレビュー</string>

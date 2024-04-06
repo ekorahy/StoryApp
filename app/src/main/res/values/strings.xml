@@ -35,6 +35,34 @@
     <string name="label_or">or</string>
     <string name="app_developer">ekorahy</string>
     <string name="label_by">by</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="try_again">Try again</string>
+    <string name="time_out">Time Out</string>
+    <string name="label_map_story">Map Story</string>
+    <string name="location_activated">Location settings have been activated</string>
+    <string name="enable_gps">You must enable GPS to create stories with locations!</string>
+    <string name="get_my_location">Get location successfully.\n Latitude: %1f, Longitude: %2f</string>
+    <string name="location_not_found">Location is not found. Please try again</string>
+    <string name="no_media_selected">No Media Selected</string>
+    <string name="no_picture_taken">No picture taken yet</string>
+    <string name="image_not_available">Image not available</string>
+    <string name="success">Success</string>
+    <string name="ok">Oke</string>
+    <string name="style_parsing_failed">Style parsing failed</string>
+    <string name="cannot_found_style">Can\'t find style. Error: %s</string>
+    <string name="email_not_valid">Email not valid</string>
+    <string name="password_must_lest_than_eight">Password cannot less than 8 character</string>
+    <string name="successfully_login">You successfully login</string>
+    <string name="confirmation">Confirmation!</string>
+    <string name="confirmation_message_logout">Are you sure, you want to log out?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="no_data_location">No data location</string>
+    <string name="use_my_location">Use my location</string>
+    <string name="normal">Normal</string>
+    <string name="satellite">Satellite</string>
+    <string name="terrain">Terrain</string>
+    <string name="hybrid">Hybrid</string>
 
     <!-- content Description -->
     <string name="image_preview">Image preview</string>

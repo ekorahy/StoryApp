@@ -1,4 +1,4 @@
-package com.example.storyapp.data.pref
+package com.example.storyapp.data.pref.user
 
 import android.content.Context
 import androidx.datastore.core.DataStore

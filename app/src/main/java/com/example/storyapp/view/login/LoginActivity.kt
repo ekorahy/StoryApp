@@ -14,11 +14,11 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.storyapp.R
-import com.example.storyapp.data.pref.UserModel
+import com.example.storyapp.data.pref.user.UserModel
 import com.example.storyapp.databinding.ActivityLoginBinding
-import com.example.storyapp.view.ViewModelFactory
 import com.example.storyapp.view.main.MainActivity
 import com.example.storyapp.data.Result
+import com.example.storyapp.view.ViewModelFactoryAuthentication
 import com.example.storyapp.view.register.RegisterActivity
 import com.google.android.material.snackbar.Snackbar
 
@@ -37,7 +37,8 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+        val factory: ViewModelFactoryAuthentication =
+            ViewModelFactoryAuthentication.getInstance(this)
         val viewModel: LoginViewModel by viewModels {
             factory
         }
@@ -112,8 +113,8 @@ class LoginActivity : AppCompatActivity() {
     private fun alertResponse(message: String) {
         AlertDialog.Builder(this).apply {
             setTitle(message)
-            setMessage("You successfully login")
-            setPositiveButton("Ok") { _, _ ->
+            setMessage(getString(R.string.successfully_login))
+            setPositiveButton(getString(R.string.ok)) { _, _ ->
                 val intent = Intent(context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
